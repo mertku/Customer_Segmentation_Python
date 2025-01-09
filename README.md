@@ -30,72 +30,14 @@ from sklearn.preprocessing import StandardScaler
 pd.options.display.float_format = '{:20.2f}'.format
 df = pd.read_excel('C:/Users/mertk/Data Science/Python/Datasets/Excel/online_retail_II.xlsx' , sheet_name= 0 )
 ```
-### First three rows of data looks like this :
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Invoice</th>
-      <th>StockCode</th>
-      <th>Description</th>
-      <th>Quantity</th>
-      <th>InvoiceDate</th>
-      <th>Price</th>
-      <th>Customer ID</th>
-      <th>Country</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>489434</td>
-      <td>85048</td>
-      <td>15CM CHRISTMAS GLASS BALL 20 LIGHTS</td>
-      <td>12</td>
-      <td>2009-12-01 07:45:00</td>
-      <td>6.95</td>
-      <td>13085.00</td>
-      <td>United Kingdom</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>489434</td>
-      <td>79323P</td>
-      <td>PINK CHERRY LIGHTS</td>
-      <td>12</td>
-      <td>2009-12-01 07:45:00</td>
-      <td>6.75</td>
-      <td>13085.00</td>
-      <td>United Kingdom</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>489434</td>
-      <td>79323W</td>
-      <td>WHITE CHERRY LIGHTS</td>
-      <td>12</td>
-      <td>2009-12-01 07:45:00</td>
-      <td>6.75</td>
-      <td>13085.00</td>
-      <td>United Kingdom</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+### First five rows of data looks like this :
+|   Invoice | StockCode   | Description                         |   Quantity | InvoiceDate         |   Price |   Customer ID | Country        |
+|----------:|:------------|:------------------------------------|-----------:|:--------------------|--------:|--------------:|:---------------|
+|    489434 | 85048       | 15CM CHRISTMAS GLASS BALL 20 LIGHTS |         12 | 2009-12-01 07:45:00 |    6.95 |         13085 | United Kingdom |
+|    489434 | 79323P      | PINK CHERRY LIGHTS                  |         12 | 2009-12-01 07:45:00 |    6.75 |         13085 | United Kingdom |
+|    489434 | 79323W      | WHITE CHERRY LIGHTS                 |         12 | 2009-12-01 07:45:00 |    6.75 |         13085 | United Kingdom |
+|    489434 | 22041       | RECORD FRAME 7" SINGLE SIZE         |         48 | 2009-12-01 07:45:00 |    2.1  |         13085 | United Kingdom |
+|    489434 | 21232       | STRAWBERRY CERAMIC TRINKET BOX      |         24 | 2009-12-01 07:45:00 |    1.25 |         13085 | United Kingdom |
 
 It looks like there are NaN values for **Customer ID** .
 
@@ -295,60 +237,15 @@ col = non_outlier_df['Clusters'].map(cluster_colors)
 ![3dclusterd](/assets/clustered3d.png)
 
 
-### First 3 rows of the clustered dataset looks like this .
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+### First five rows of the clustered dataset looks like this .
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Customer ID</th>
-      <th>MonetaryValue</th>
-      <th>Frequency</th>
-      <th>Recency</th>
-      <th>Clusters</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>12346.00</td>
-      <td>169.36</td>
-      <td>2</td>
-      <td>164</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>12347.00</td>
-      <td>1323.32</td>
-      <td>2</td>
-      <td>2</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>12348.00</td>
-      <td>221.16</td>
-      <td>1</td>
-      <td>73</td>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+|   Customer ID |   MonetaryValue |   Frequency |   Recency |   Clusters |
+|--------------:|----------------:|------------:|----------:|-----------:|
+|         12346 |          169.36 |           2 |       164 |          1 |
+|         12347 |         1323.32 |           2 |         2 |          0 |
+|         12348 |          221.16 |           1 |        73 |          2 |
+|         12349 |         2221.14 |           2 |        42 |          0 |
+|         12351 |          300.93 |           1 |        10 |          2 |
 
 ### Plot each feature for all clusters.  (Distribution of whole clustered dataset at the end)
 
