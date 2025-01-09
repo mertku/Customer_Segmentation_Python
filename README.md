@@ -176,3 +176,22 @@ plt.show()
 ```
 ![Boxplot](/assets/boxplot1.png)
 
+Looks like there are outliers for both 'MonetaryValue' and 'Frequency'. To detect outliers i will be using **Interquartile Range (IQR) Method** . Method suggests to calculate middle %50 of the data and points that fall significantly below or above the range are outliers.
+```python
+mon_Q3 = dfstock_feat['MonetaryValue'].quantile(0.75)
+mon_Q1 = dfstock_feat['MonetaryValue'].quantile(0.25)
+mon_Q3_Q1 = mon_Q3-mon_Q1 
+
+fre_Q3 = dfstock_feat['Frequency'].quantile(0.75)
+fre_Q1 = dfstock_feat['Frequency'].quantile(0.25)
+fre_Q3_Q1 = fre_Q3-fre_Q1
+```
+*Calculating middle %50 percent portion.*
+```python
+mon_outliers = dfstock_feat[(dfstock_feat['MonetaryValue'] > (mon_Q3 + 1.5*mon_Q3_Q1)) |
+                            (dfstock_feat['MonetaryValue'] < (mon_Q1 - 1.5*mon_Q3_Q1))].copy()
+freq_outliers  =dfstock_feat[(dfstock_feat['Frequency'] > (fre_Q3 + 1.5*fre_Q3_Q1)) | 
+                             (dfstock_feat['Frequency'] < (fre_Q1 - 1.5*fre_Q3_Q1))].copy()
+non_outlier_df = dfstock_feat[(~dfstock_feat.index.isin(mon_outliers.index)) &
+                              (~dfstock_feat.index.isin(freq_outliers.index))].copy()
+```
